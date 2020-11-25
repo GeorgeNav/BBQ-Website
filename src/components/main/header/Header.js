@@ -1,19 +1,36 @@
 import React from 'react'
-import { Box } from '@material-ui/core'
+import { AppBar, Button, IconButton, Toolbar, Typography } from '@material-ui/core'
 import titleImg from 'assets/images/title.png'
+import { Menu } from '@material-ui/icons'
+import { useStyles } from 'utils/style'
 
 const Header = () => {
-  return <Box
-    style={{
-      backgroundColor: 'rgb(130, 130, 130)',
-    }}>
-    <img src={titleImg} style={{
-      display: 'block',
-      marginLeft: 'auto',
-      marginRight: 'auto',
-      width: '25%',
-    }}/>
-  </Box>
+  const classes = useStyles()
+  
+  return <AppBar
+    position='static'>
+    <Toolbar
+      style={{
+        backgroundColor: 'rgb(130, 130, 130)',
+      }}>
+      <IconButton
+        edge='start'
+        className={classes.menuButton}
+        color='inherit'
+        aria-label='menu'>
+        <Menu />
+      </IconButton>
+      <Typography
+        variant='h6'
+        className={classes.title}>
+        Old School Smokers of Texas
+      </Typography>
+      <Button
+        color='inherit'>
+        Login
+      </Button>
+    </Toolbar>
+  </AppBar>
 }
 
 export default Header

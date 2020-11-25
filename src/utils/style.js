@@ -19,4 +19,10 @@ export const useStyles = makeStyles((theme) => ({
       : theme.palette.grey[800],
     flexShrink: 0,
   },
+  mainMenu: {
+    marginRight: theme.spacing(2),
+  },
+  title: {
+    flexGrow: 1,
+  },
 }))
