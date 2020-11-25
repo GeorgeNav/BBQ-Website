@@ -15,7 +15,7 @@ const Header = () => {
       justifyContent: 'center',
     }}>
       <Locations/>
-      <Button href='832-518-8781'>
+      <Button href='tel:8325188781'>
         <Phone/>
         <Typography>832-518-8781</Typography>
       </Button>
