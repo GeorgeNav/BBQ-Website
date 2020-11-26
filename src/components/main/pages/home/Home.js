@@ -1,6 +1,7 @@
 import React from 'react'
 import { Parallax } from 'react-parallax'
 import { Box, Typography } from '@material-ui/core'
+import Instagram from 'components/main/pages/home/instagram/Instagram'
 import coalImg from 'assets/images/coal.jpg'
 
 const Home = () => {
@@ -25,7 +26,7 @@ const Home = () => {
         </Typography>
       </div>
     </Parallax>
-    
+    <Instagram/>
   </Box>
 }
 
