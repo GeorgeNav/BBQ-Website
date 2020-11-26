@@ -9,7 +9,7 @@ const Instagram = () => {
   useEffect(async() => {
     // %7B%22only_stories%22%3Atrue%2C%22stories_prefetch%22%3Afalse%2C%22stories_video_dash_manifest%22%3Afalse%7D
     const variables = {
-      id: '5841654985',
+      id: '44904784778',
       first: 10,
     }
     const url = 'https://www.instagram.com/graphql/query/?query_hash=56a7068fea504063273cc2120ffd54f3&variables=' + JSON.stringify(variables)
@@ -31,9 +31,9 @@ const Instagram = () => {
   return <GridList style={{
     margin: 'auto',
     width: '90vw',
-    maxWidth: 400,
+    maxWidth: 300,
     height: '90vh',
-    maxHeight: 400,
+    maxHeight: 300,
     overflowY: 'auto',
   }}>
     {posts.map((post) =>
@@ -46,7 +46,7 @@ const Instagram = () => {
           alt={post.caption}
           style={{
             width: '45vw',
-            maxWidth: 200,
+            maxWidth: 150,
           }}/>
       </GridListTile>)}
   </GridList>
