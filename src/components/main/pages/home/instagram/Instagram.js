@@ -29,7 +29,7 @@ const Instagram = () => {
   }, [])
 
   return <GridList style={{
-    margin: 50,
+    margin: 'auto',
     width: 400,
     height: 400,
     overflowY: 'auto',
@@ -40,9 +40,11 @@ const Instagram = () => {
         component='button'
         key={shortid.generate()}>
         <img
-          width={300}
           src={post.thumbnail}
-          alt={post.caption}/>
+          alt={post.caption}
+          style={{
+            width: 200,
+          }}/>
       </GridListTile>)}
   </GridList>
 }
