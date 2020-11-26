@@ -30,8 +30,10 @@ const Instagram = () => {
 
   return <GridList style={{
     margin: 'auto',
-    width: 400,
-    height: 400,
+    width: '90vw',
+    maxWidth: 400,
+    height: '90vh',
+    maxHeight: 400,
     overflowY: 'auto',
   }}>
     {posts.map((post) =>
@@ -43,7 +45,8 @@ const Instagram = () => {
           src={post.thumbnail}
           alt={post.caption}
           style={{
-            width: 200,
+            width: '45vw',
+            maxWidth: 200,
           }}/>
       </GridListTile>)}
   </GridList>
