@@ -1,8 +1,8 @@
 import React from 'react'
 import { Box, Button, Paper, Typography } from '@material-ui/core'
 import { useStyles } from 'utils/style'
-import SocialLinks from 'components/footer/socialLinks/SocialLinks'
-import Locations from 'components/footer/locations/Locations'
+import SocialLinks from 'components/footer/SocialLinks'
+import Locations from 'components/footer/Locations'
 import { Phone } from '@material-ui/icons'
 
 const Header = () => {
@@ -16,8 +16,8 @@ const Header = () => {
     }}>
       <Locations/>
       <Button href='tel:713-269-8882'>
-        <Phone/>
-        <Typography>713-269-8882</Typography>
+        <Phone style={{color: 'white'}}/>
+        <Typography style={{color: 'white'}}>713-269-8882</Typography>
       </Button>
       <SocialLinks/>
     </Box>

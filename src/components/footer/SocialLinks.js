@@ -11,10 +11,10 @@ const SocialLinks = () => <Box
     justifyContent: 'flex-end',
   }}>
   <IconButton href='https://www.instagram.com/ossoftexas/' target='_blank'>
-    <Instagram/>
+    <Instagram style={{color: 'white'}}/>
   </IconButton>
   <IconButton href='https://www.facebook.com/profile.php?id=100007353422120' target='_blank'>
-    <Facebook />
+    <Facebook style={{color: 'white'}}/>
   </IconButton>
 </Box>
 

@@ -6,6 +6,7 @@ const groupStyle = {
   flex: 1,
   display: 'flex',
   direction: 'row',
+  color: 'white',
 }
 
 const Locations = () => {
@@ -19,7 +20,7 @@ const Locations = () => {
       href='https://goo.gl/maps/s22hgPAfGCzaRcLW8'
       target='_blank'>
       <Map/>
-      <Typography >1314 East Ave, Katy, TX 77493</Typography>
+      <Typography>1314 East Ave, Katy, TX 77493</Typography>
     </Button>
   </Box>
 }

@@ -1,36 +1,31 @@
-import React from 'react'
-import { AppBar, Button, IconButton, Toolbar, Typography } from '@material-ui/core'
-import titleImg from 'assets/images/title.png'
-import { Menu } from '@material-ui/icons'
-import { useStyles } from 'utils/style'
+import React, { Fragment, useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
+import AppBar from 'components/main/header/appbar/AppBar'
+import Navigation from 'components/main/header/navigation/Navigation'
 
-const Header = () => {
-  const classes = useStyles()
+const Header = ({page, setPage, pageNames}) => {
+  const [menuOpen, setMenuOpen] = useState(false)
+  const toggleMenu = () => setMenuOpen((curMenuOpen) => !curMenuOpen)
+  useEffect(() => setMenuOpen(false), [page])
   
-  return <AppBar
-    position='static'>
-    <Toolbar
-      style={{
-        backgroundColor: 'rgb(130, 130, 130)',
-      }}>
-      <IconButton
-        edge='start'
-        className={classes.menuButton}
-        color='inherit'
-        aria-label='menu'>
-        <Menu />
-      </IconButton>
-      <Typography
-        variant='h6'
-        className={classes.title}>
-        Old School Smokers of Texas
-      </Typography>
-      <Button
-        color='inherit'>
-        Login
-      </Button>
-    </Toolbar>
-  </AppBar>
+  return <Fragment>
+    <AppBar {...{
+      toggleMenu,
+    }}/>
+    <Navigation {...{
+      page,
+      setPage,
+      pageNames,
+      menuOpen,
+      toggleMenu,
+    }}/>
+  </Fragment>
+}
+
+Header.propTypes = {
+  page: PropTypes.string.isRequired,
+  setPage: PropTypes.func.isRequired,
+  pageNames: PropTypes.array.isRequired,
 }
 
 export default Header

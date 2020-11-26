@@ -9,7 +9,8 @@ import {
 const App = () => {
   const classes = useStyles()
 
-  return <div className={classes.root}>
+  return <div
+    className={classes.root}>
     <CssBaseline/>
     <Main/>
     <Footer/>

@@ -13,10 +13,11 @@ export const useStyles = makeStyles((theme) => ({
     overflowY: 'auto',
     flexShrink: 0,
   },
+  header: {
+    backgroundColor: theme.palette.grey[800],
+  },
   footer: {
-    backgroundColor: theme.palette.type === 'light'
-      ? theme.palette.grey[200]
-      : theme.palette.grey[800],
+    backgroundColor: theme.palette.grey[800],
     flexShrink: 0,
   },
   mainMenu: {
