@@ -85,12 +85,12 @@ const TimelineComp = () => {
                 if(file.metadata.contentType.includes('image'))
                   return <img
                     src={file.url}
-                    style={{maxWidth: '30vw'}}/>
+                    style={{maxWidth: '40vw'}}/>
                 else if(file.metadata.contentType.includes('video'))
                   return <video
                     controls
                     src={file.url}
-                    style={{maxWidth: '30vw'}}/>
+                    style={{maxWidth: '40vw'}}/>
               })()}
             </Box>,
           )}
