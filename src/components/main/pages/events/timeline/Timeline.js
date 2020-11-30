@@ -73,7 +73,11 @@ const TimelineComp = () => {
           <TimelineDot/>
           <TimelineConnector/>
         </TimelineSeparator>
-        <TimelineContent>
+        <TimelineContent
+          style={{
+            maxHeight: '50vh',
+            overflowY: 'auto',
+          }}>
           {event.map((file) =>
             <Box
               key={shortid.generate()}>
