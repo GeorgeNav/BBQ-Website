@@ -83,9 +83,14 @@ const TimelineComp = () => {
               key={shortid.generate()}>
               {(() => {
                 if(file.metadata.contentType.includes('image'))
-                  return <img width={300} src={file.url}/>
+                  return <img
+                    src={file.url}
+                    style={{maxWidth: '30vw'}}/>
                 else if(file.metadata.contentType.includes('video'))
-                  return <video width={300} src={file.url} controls/>
+                  return <video
+                    controls
+                    src={file.url}
+                    style={{maxWidth: '30vw'}}/>
               })()}
             </Box>,
           )}
