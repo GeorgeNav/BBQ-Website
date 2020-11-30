@@ -10,11 +10,12 @@ const Header = () => {
 
   return <Box
     className={classes.footer}>
-    <Box style={{
-      display: 'flex',
-      direction: 'row',
-      justifyContent: 'center',
-    }}>
+    <Box
+      style={{
+        display: 'flex',
+        direction: 'row',
+        justifyContent: 'center',
+      }}>
       <Locations/>
       <Button href='tel:713-269-8882'>
         <Phone style={{color: 'white'}}/>

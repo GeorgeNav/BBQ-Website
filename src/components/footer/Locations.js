@@ -2,13 +2,6 @@ import React from 'react'
 import { Box, Button, Typography } from '@material-ui/core'
 import { Map } from '@material-ui/icons'
 
-const groupStyle = {
-  flex: 1,
-  display: 'flex',
-  direction: 'row',
-  color: 'white',
-}
-
 const Locations = () => {
   return <Box
     style={{
@@ -16,9 +9,14 @@ const Locations = () => {
       justifyContent: 'flex-start',
     }}>
     <Button
-      style={groupStyle}
       href='https://goo.gl/maps/s22hgPAfGCzaRcLW8'
-      target='_blank'>
+      target='_blank'
+      style={{
+        flex: 1,
+        display: 'flex',
+        direction: 'row',
+        color: 'white',
+      }}>
       <Map/>
       <Typography>1314 East Ave, Katy, TX 77493</Typography>
     </Button>

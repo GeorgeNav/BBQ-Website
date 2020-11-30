@@ -5,6 +5,7 @@ import { useStyles } from 'utils/style'
 import { Box } from '@material-ui/core'
 import {
   Home,
+  Events,
 } from 'components/main/pages'
 
 const pageNames = {
@@ -17,6 +18,8 @@ const CurrentPage = ({ page }) => {
   switch(page) {
   case pageNames.HOME:
     return <Home/>
+  case pageNames.EVENTS:
+    return <Events/>
   default:
     return <div>{page} page is still in development</div>
   }

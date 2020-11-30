@@ -6,7 +6,10 @@ import Navigation from 'components/main/header/navigation/Navigation'
 const Header = ({page, setPage, pageNames}) => {
   const [menuOpen, setMenuOpen] = useState(false)
   const toggleMenu = () => setMenuOpen((curMenuOpen) => !curMenuOpen)
-  useEffect(() => setMenuOpen(false), [page])
+
+  useEffect(() => {
+    setMenuOpen(false)
+  }, [page])
   
   return <Fragment>
     <AppBar {...{

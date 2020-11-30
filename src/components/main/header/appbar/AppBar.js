@@ -17,7 +17,8 @@ const Header = ({ toggleMenu }) => {
     position='static'>
     <Toolbar
       className={classes.header}>
-      <Box className={classes.title}>
+      <Box
+        className={classes.title}>
         <Typography>
           Old School Smokers
         </Typography>

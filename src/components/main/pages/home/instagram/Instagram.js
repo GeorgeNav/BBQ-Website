@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import shortid from 'shortid'
-import { GridList, GridListTile } from '@material-ui/core'
+import { GridList } from '@material-ui/core'
+import Tile from 'components/main/pages/home/instagram/Tile'
 
 const Instagram = () => {
-  const [posts, setPosts] = useState([])
+  const [posts, setPosts] = useState(null)
+  const tileSize = 100
+  const containerSize = tileSize * 3
 
   useEffect(async() => {
-    // %7B%22only_stories%22%3Atrue%2C%22stories_prefetch%22%3Afalse%2C%22stories_video_dash_manifest%22%3Afalse%7D
     const variables = {
-      id: '44904784778',
-      first: 10,
+      // id: '44904784778', // ossoftexas 
+      id: '5841654985', // georgeyhehe123 
+      first: 20,
     }
     const url = 'https://www.instagram.com/graphql/query/?query_hash=56a7068fea504063273cc2120ffd54f3&variables=' + JSON.stringify(variables)
     axios.get(url)
       .then((response) => {
-        console.log(response)
         const posts = response.data.data.user.edge_owner_to_timeline_media.edges.map(({ node }) => ({
           id: node.id,
           thumbnail: node.thumbnail_src,
@@ -27,28 +28,22 @@ const Instagram = () => {
       })
       .catch((error) => console.log(error))
   }, [])
-
-  return <GridList style={{
-    margin: 'auto',
-    width: '90vw',
-    maxWidth: 300,
-    height: '90vh',
-    maxHeight: 300,
-    overflowY: 'auto',
-  }}>
+  
+  return posts && <GridList
+    cols={2}
+    spacing={0}
+    style={{
+      margin: 'auto',
+      width: containerSize,
+      height: containerSize,
+      overflowY: 'auto',
+    }}>
     {posts.map((post) =>
-      <GridListTile
-        onClick={() => window.open(post.url)}
-        component='button'
-        key={shortid.generate()}>
-        <img
-          src={post.thumbnail}
-          alt={post.caption}
-          style={{
-            width: '45vw',
-            maxWidth: 150,
-          }}/>
-      </GridListTile>)}
+      <Tile
+        key={post.id}
+        size={tileSize}
+        {...post}/>,
+    )}
   </GridList>
 }
 
