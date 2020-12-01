@@ -10,8 +10,8 @@ const Instagram = () => {
 
   useEffect(async() => {
     const variables = {
-      // id: '44904784778', // ossoftexas 
-      id: '5841654985', // georgeyhehe123 
+      id: '44904784778', // ossoftexas 
+      //id: '5841654985', // georgeyhehe123 
       first: 20,
     }
     const url = 'https://www.instagram.com/graphql/query/?query_hash=56a7068fea504063273cc2120ffd54f3&variables=' + JSON.stringify(variables)

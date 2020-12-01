@@ -62,7 +62,7 @@ const TimelineComp = () => {
     .catch((error) => console.log(error)) */
   }, [])
 
-  return <Timeline align='alternate'>
+  return <Timeline>
     {events.map((event) =>
       <TimelineItem
         key={shortid.generate()}>
