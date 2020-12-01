@@ -62,18 +62,11 @@ const TimelineComp = () => {
     .catch((error) => console.log(error)) */
   }, [])
 
-  return <Timeline>
+  return <Timeline align='left'>
     {events.map((event) =>
       <TimelineItem
         key={shortid.generate()}>
-        <TimelineOppositeContent>
-          <Typography color='textSecondary'>Other Side</Typography>
-        </TimelineOppositeContent>
-        <TimelineSeparator>
-          <TimelineDot/>
-          <TimelineConnector/>
-        </TimelineSeparator>
-        <TimelineContent
+        <TimelineOppositeContent
           style={{
             maxHeight: '50vh',
             overflowY: 'auto',
@@ -94,6 +87,13 @@ const TimelineComp = () => {
               })()}
             </Box>,
           )}
+        </TimelineOppositeContent>
+        <TimelineSeparator>
+          <TimelineDot/>
+          <TimelineConnector/>
+        </TimelineSeparator>
+        <TimelineContent>
+          <Typography>Other Side</Typography>
         </TimelineContent>
       </TimelineItem>,
     )}
