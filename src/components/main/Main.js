@@ -18,8 +18,8 @@ const CurrentPage = ({ page }) => {
   switch(page) {
   case pageNames.HOME:
     return <Home/>
-  case pageNames.EVENTS:
-    return <Events/>
+  /* case pageNames.EVENTS:
+    return <Events/> */
   default:
     return <div>{page} page is still in development</div>
   }
