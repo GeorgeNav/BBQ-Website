@@ -1,9 +1,7 @@
 import firebase from 'firebase/app'
 import 'firebase/storage'
-import fbConfig from 'utils/firebase/config.json'
+import app from 'utils/firebase/app'
 
-const fbApp = firebase.initializeApp(fbConfig)
+const storage = firebase.storage(app)
 
-const fbStorage = firebase.storage(fbApp)
-
-export default fbStorage
+export default storage

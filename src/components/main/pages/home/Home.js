@@ -1,13 +1,13 @@
 import React from 'react'
 import { Parallax } from 'react-parallax'
 import { Box, Typography } from '@material-ui/core'
-import Instagram from 'components/main/pages/home/instagram/Instagram'
-import coalImg from 'assets/images/coal.jpg'
+//import Instagram from 'components/main/pages/home/instagram/Instagram'
+import smokingMeatImg from 'assets/images/smoking_meat.jpg'
 
 const Home = () => {
   return <Box>
     <Parallax
-      bgImage={coalImg}
+      bgImage={smokingMeatImg}
       strength={500}>
       <div
         style={{
@@ -26,7 +26,7 @@ const Home = () => {
         </Typography>
       </div>
     </Parallax>
-    <Instagram/>
+    {/* <Instagram/> */}
   </Box>
 }
 

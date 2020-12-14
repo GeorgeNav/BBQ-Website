@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { Box, Typography } from '@material-ui/core'
+import React from 'react'
+import { Box, Paper, Typography } from '@material-ui/core'
 import {
   Timeline,
   TimelineItem,
@@ -9,91 +9,68 @@ import {
   TimelineConnector,
   TimelineContent,
 } from '@material-ui/lab'
-import fb from 'utils/firebase'
 import shortid from 'shortid'
+import { useEvents } from 'hooks'
+
+const mediaStyle = {
+  width: 300,
+  height: 300,
+  objectFit: 'cover',
+}
 
 const TimelineComp = () => {
-  const [events, setEvents]= useState([])
+  const events = useEvents()
 
-  useEffect(async() => {
-    const eventPaths = await fb.storage.ref('events').listAll()
-      .then((data) => data.prefixes.map((childDirectory) => childDirectory.fullPath))
-      .catch((error) => {
-        console.log(error)
-        return []
-      })
-    
-    console.log(eventPaths)
-    
-    const allEventFilePaths = eventPaths.map((eventPath) =>
-      fb.storage.ref(eventPath).listAll()
-        .then((data) =>
-          Promise.all(
-            data.items.map((file) =>
-              Promise.all([
-                file.getMetadata(),
-                file.getDownloadURL(),
-              ])
-                .then(([metadata, url]) => ({
-                  metadata,
-                  url,
-                })),
-            ),
-          ),
-        )
-        .catch((error) => {
-          console.log(error)
-          return []
-        }),
-    )
+  console.log('Events:', events)
 
-    Promise.all(allEventFilePaths).then((allEvents) => {
-      console.log(allEvents)
-      setEvents(allEvents)
-    })
-    /*     .getDownloadURL()
-    .then((url) => {
-      console.log(extension, 'url:', url)
-      setResumeURLs((prevResumeURLs) => ({
-        ...prevResumeURLs,
-        [extension]: url,
-      }))
-    })
-    .catch((error) => console.log(error)) */
-  }, [])
-
-  return <Timeline align='left'>
+  return events.length > 0 && <Timeline
+    align='left'>
     {events.map((event) =>
       <TimelineItem
         key={shortid.generate()}>
-        <TimelineOppositeContent
-          style={{
-            maxHeight: '50vh',
-            overflowY: 'auto',
-          }}>
-          {event.map((file) =>
+        <TimelineOppositeContent>
+          <Paper
+            elevation={3}
+            style={{
+              padding: 20,
+            }}>
             <Box
-              key={shortid.generate()}>
-              {(() => {
-                if(file.metadata.contentType.includes('image'))
-                  return <img
-                    src={file.url}
-                    style={{maxWidth: '40vw'}}/>
-                else if(file.metadata.contentType.includes('video'))
-                  return <video
-                    controls
-                    src={file.url}
-                    style={{maxWidth: '40vw'}}/>
-              })()}
-            </Box>,
-          )}
+              style={{
+                maxHeight: '50vh',
+                overflowY: 'auto',
+              }}>
+              <Box>
+                {(() => {
+                  const images = event.files.filter((file) => file.metadata.contentType.includes('image'))
+                  console.log('images:', images)
+                  return images.length > 0 && images.map((file) =>
+                    <img
+                      key={shortid.generate()}
+                      src={file.url}
+                      style={mediaStyle}/>)
+                })()}
+              </Box>
+              <Box>
+                {(() => {
+                  const videos = event.files.filter((file) => file.metadata.contentType.includes('videos'))
+                  console.log('videos:', videos)
+                  return videos.length > 0 && videos.map((file) =>
+                    <video
+                      key={shortid.generate()}
+                      controls
+                      src={file.url}
+                      style={mediaStyle}/>)
+                })()}
+              </Box>
+            </Box>
+          </Paper>
         </TimelineOppositeContent>
         <TimelineSeparator>
           <TimelineDot/>
           <TimelineConnector/>
         </TimelineSeparator>
         <TimelineContent>
-          <Typography>Other Side</Typography>
+          <Typography>{event.name}</Typography>
         </TimelineContent>
       </TimelineItem>,
     )}

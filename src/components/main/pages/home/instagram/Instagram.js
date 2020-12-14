@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { GridList } from '@material-ui/core'
-import Tile from 'components/main/pages/home/instagram/Tile'
+import InstagramTile from 'components/main/pages/home/instagram/InstagramTile'
 
 const Instagram = () => {
   const [posts, setPosts] = useState(null)
-  const tileSize = 100
+  const tileSize = 200
   const containerSize = tileSize * 3
 
   useEffect(async() => {
@@ -39,7 +39,7 @@ const Instagram = () => {
       overflowY: 'auto',
     }}>
     {posts.map((post) =>
-      <Tile
+      <InstagramTile
         key={post.id}
         size={tileSize}
         {...post}/>,
