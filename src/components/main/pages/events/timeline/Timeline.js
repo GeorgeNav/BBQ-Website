@@ -19,8 +19,8 @@ import shortid from 'shortid'
 import { useEvents } from 'hooks'
 
 const mediaStyle = {
-  width: 300,
-  height: 300,
+  width: 100,
+  height: 100,
   objectFit: 'cover',
 }
 
