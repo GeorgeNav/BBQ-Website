@@ -9,6 +9,12 @@ import {
   TimelineConnector,
   TimelineContent,
 } from '@material-ui/lab'
+import {
+  MuiPickersUtilsProvider,
+  KeyboardDatePicker,
+  KeyboardTimePicker,
+} from '@material-ui/pickers'
+import DateFnsUtils from '@date-io/date-fns'
 import shortid from 'shortid'
 import { useEvents } from 'hooks'
 
@@ -23,7 +29,7 @@ const TimelineComp = () => {
 
   console.log('Events:', events)
 
-  return events.length > 0 && <Timeline
+  return <Timeline
     align='left'>
     {events.map((event) =>
       <TimelineItem
@@ -43,7 +49,7 @@ const TimelineComp = () => {
                 {(() => {
                   const images = event.files.filter((file) => file.metadata.contentType.includes('image'))
                   console.log('images:', images)
-                  return images.length > 0 && images.map((file) =>
+                  return images.map((file) =>
                     <img
                       key={shortid.generate()}
                       src={file.url}
@@ -54,7 +60,7 @@ const TimelineComp = () => {
                 {(() => {
                   const videos = event.files.filter((file) => file.metadata.contentType.includes('videos'))
                   console.log('videos:', videos)
-                  return videos.length > 0 && videos.map((file) =>
+                  return videos.map((file) =>
                     <video
                       key={shortid.generate()}
                       controls
@@ -70,7 +76,22 @@ const TimelineComp = () => {
           <TimelineConnector/>
         </TimelineSeparator>
         <TimelineContent>
-          <Typography>{event.name}</Typography>
+          <Typography variant='h3'>{event.name}</Typography>
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <KeyboardDatePicker
+              variant='inline'
+              format='MM/dd/yyyy'
+              margin='normal'
+              label='start date'
+              value={event.time.start.toDate()}
+              onChange={() => {}}/>
+            <KeyboardTimePicker
+              margin='normal'
+              label='start time'
+              value={event.time.start.toDate()}
+              onChange={() => {}}/>
+          </MuiPickersUtilsProvider>
+          <Typography>{event.description}</Typography>
         </TimelineContent>
       </TimelineItem>,
     )}
