@@ -22,6 +22,7 @@
     "react-scripts": "latest",
     "react-spring": "latest",
     "shortid": "latest",
+    "swiper": "latest",
     "web-vitals": "latest"
   },
   "scripts": {

@@ -33,7 +33,7 @@ CurrentPage.propTypes = {
 
 const Main = () => {
   const classes = useStyles()
-  const [page, setPage] = useState(pageNames.HOME)
+  const [page, setPage] = useState(pageNames.EVENTS)
 
   return <Box
     className={classes.main}>

@@ -14,13 +14,14 @@ import {
   KeyboardDatePicker,
   KeyboardTimePicker,
 } from '@material-ui/pickers'
+import { Swiper, SwiperSlide } from 'swiper/react'
 import DateFnsUtils from '@date-io/date-fns'
 import shortid from 'shortid'
 import { useEvents } from 'hooks'
 
 const mediaStyle = {
-  width: 100,
-  height: 100,
+  width: 200,
+  height: 200,
   objectFit: 'cover',
 }
 
@@ -45,28 +46,47 @@ const TimelineComp = () => {
                 maxHeight: '50vh',
                 overflowY: 'auto',
               }}>
+              <Swiper
+                navigation
+                pagination
+                slidesPerView={1}
+                spaceBetween={20}
+                style={{
+                  backgroundColor: 'red',
+                }}>
+                {event.files
+                  .filter((file) => file.metadata.contentType.includes('image'))
+                  .map((file) =>
+                    <SwiperSlide
+                      key={shortid.generate()}>
+                      <img
+                        src={file.url}
+                        style={mediaStyle}/>
+                    </SwiperSlide>)}
+              </Swiper>
               <Box>
-                {(() => {
-                  const images = event.files.filter((file) => file.metadata.contentType.includes('image'))
-                  console.log('images:', images)
-                  return images.map((file) =>
-                    <img
-                      key={shortid.generate()}
-                      src={file.url}
-                      style={mediaStyle}/>)
-                })()}
-              </Box>
-              <Box>
-                {(() => {
-                  const videos = event.files.filter((file) => file.metadata.contentType.includes('videos'))
-                  console.log('videos:', videos)
-                  return videos.map((file) =>
-                    <video
-                      key={shortid.generate()}
-                      controls
-                      src={file.url}
-                      style={mediaStyle}/>)
-                })()}
+                <Swiper
+                  navigation
+                  pagination
+                  slidesPerView={1}
+                  spaceBetween={20}
+                  style={{
+                    backgroundColor: 'blue',
+                  }}>
+                  {(() => {
+                    const videos = event.files.filter((file) =>
+                      file.metadata.contentType.includes('video')) 
+                    console.log('videos:', videos)
+                    return videos.map((file) =>
+                      <SwiperSlide
+                        key={shortid.generate()}>
+                        <video
+                          controls
+                          src={file.url}
+                          style={mediaStyle}/>
+                      </SwiperSlide>)
+                  })()}
+                </Swiper>
               </Box>
             </Box>
           </Paper>
